@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val RESULT_1 = "Result #1"
+    private val RESULT_2 = "Result #2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,15 +45,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun fakeApiRequest() {
+
         val result1 = getResult1FromApi()
         println("debug: $result1")
         setTextOnMainThread(result1)
+
+        val result2 = getResult2FromApi(result1)
+        setTextOnMainThread(result2)
     }
 
     private suspend fun getResult1FromApi(): String {
-        logThread("gerResultFromApi")
+        logThread("gerResult1FromApi")
         delay(1000)
         return RESULT_1
+    }
+
+    private suspend fun getResult2FromApi(result: String): String {
+        logThread("gerResult2FromApi")
+        delay(1000)
+        return RESULT_2
     }
 
     private fun logThread(methodName: String){
