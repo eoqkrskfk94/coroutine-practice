@@ -2,7 +2,7 @@ package com.mobinity.coroutine_practice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mobinity.coroutine_practice.databinding.ActivityMainBinding
+import com.mobinity.coroutine_practice.databinding.ActivityCoroutinePracticeBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -10,16 +10,21 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity() {
+/**
+ * Simple coroutine practice
+ * 1. coroutineScope
+ * 2. withContext
+ */
+class CoroutinePracticeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityCoroutinePracticeBinding
 
     private val RESULT_1 = "Result #1"
     private val RESULT_2 = "Result #2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityCoroutinePracticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
@@ -46,11 +51,11 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun fakeApiRequest() {
 
-        val result1 = getResult1FromApi()
+        val result1 = getResult1FromApi() // wait until completion
         println("debug: $result1")
         setTextOnMainThread(result1)
 
-        val result2 = getResult2FromApi(result1)
+        val result2 = getResult2FromApi(result1) // wait until completion
         setTextOnMainThread(result2)
     }
 
