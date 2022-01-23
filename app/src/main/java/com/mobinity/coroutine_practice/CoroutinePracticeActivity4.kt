@@ -31,6 +31,7 @@ class CoroutinePracticeActivity4 : AppCompatActivity() {
             setNewText("Clicked!")
 
             fakeApiRequest()
+            fakeApiRequestUsingAsyncAndAwait()
 
         }
 
