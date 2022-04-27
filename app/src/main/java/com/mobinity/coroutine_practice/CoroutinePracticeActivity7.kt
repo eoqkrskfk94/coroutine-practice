@@ -38,7 +38,6 @@ class CoroutinePracticeActivity7 : AppCompatActivity() {
     }
 
 
-
     /**
      * first scenario:
      *  -> jobA success
