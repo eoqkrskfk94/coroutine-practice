@@ -31,6 +31,8 @@ class CoroutinePracticeActivity7 : AppCompatActivity() {
     }
 
 
+
+
     val handler = CoroutineExceptionHandler { _, exception ->
         println("Exception thrown in one of the children: $exception")
     }
